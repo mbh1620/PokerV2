@@ -55,14 +55,7 @@ Score& Score:: operator=(const Score& a)
 
 float Score::Calculate_Score(Table& _table, Player& _player)
 {
-	Card Players_Cards[7];
-	Players_Cards[0] = _player.get_hand().get_A();
-	Players_Cards[1] = _player.get_hand().get_B();
-	Players_Cards[2] = _table.get_Flop()[0];
-	Players_Cards[3] = _table.get_Flop()[1];
-	Players_Cards[4] = _table.get_Flop()[3];
-	Players_Cards[5] = _table.get_River()[0];
-	Players_Cards[6] = _table.get_River()[1];
+	
 
 	std::cout << Players_Cards[3];
 

@@ -1,4 +1,4 @@
-
+#include "score_calculations.hpp"
 //--------------------------------------------------------------------//
 //																	  //
 //					The Table Class - Used to display the game 	      //
@@ -134,7 +134,7 @@ void Table::players_turn(int current_player)
 
 	while(flag)
 	{
-		system("clear");
+		//system("clear");
 		char ans;
 		float bet;
 		char f;
@@ -249,6 +249,121 @@ void Table::print_table()
 	}
 
 	std::cout << "The highest bet: £" <<  highest_bet << "\n";
+}
+
+float Player::calculate_score(Table& _table)
+{
+	float score;
+
+	Card Players_Cards[7];
+	Players_Cards[0] = hand1.get_A();
+	Players_Cards[1] = hand1.get_B();
+	Players_Cards[2] = _table.get_Flop()[0];
+	Players_Cards[3] = _table.get_Flop()[1];
+	Players_Cards[4] = _table.get_Flop()[2];
+	Players_Cards[5] = _table.get_River()[0];
+	Players_Cards[6] = _table.get_River()[1];
+
+	/* Winning Hands - 
+				1 - Royal Flush
+				2 - Straight Flush
+				3 - Four of a Kind
+				4 - Full House
+				5 - Flush
+				6 - Straight
+				7 - Three of a Kind
+				8 - Two Pair
+				9 - Pair
+				10 - High Card
+
+	When Calculating score check in this order
+	*/
+
+	// Check for Royal Flush:
+
+	if(royal_flush(Players_Cards))
+	{
+		score = 1;
+		return 1;	
+	}
+		
+
+	// Check for Straight Flush:
+
+	if(straight_flush(Players_Cards))
+	{
+		score = 2;
+		return 2;
+	}
+
+	// Check for Four of a Kind:
+
+	if(four_of_a_kind(Players_Cards))
+	{
+		score = 3;
+		return 3;
+	}
+
+	// Check for Full House:
+
+	if(full_house(Players_Cards))
+	{
+		score = 4;
+		return 4;
+	}
+
+
+	// Check for Flush:
+
+	if(flush(Players_Cards))
+	{
+		score = 5;
+		return 5;
+	}
+
+
+	// Check for Straight:
+
+	if(straight(Players_Cards))
+	{
+		score = 6;
+		return 6;
+	}
+
+	// Check for Three of a Kind:
+
+	if(three_of_a_kind(Players_Cards))
+	{
+		score = 7; 
+		return 7;
+	}
+
+	// Check for Two Pair:
+
+	if(two_pair(Players_Cards))
+	{
+		score = 8;
+		return 8;
+	}
+
+	// Check for Pair:
+
+	if(pair(Players_Cards))
+	{
+		score = 9;
+		return 9;
+	}
+
+	// Check for High Card:
+
+	if(high_card(Players_Cards))
+	{
+		score = 10;
+		return 10;
+	}
+
+return 0;
+
 }
 
 

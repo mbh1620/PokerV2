@@ -1,4 +1,4 @@
-
+#include <time.h>
 //--------------------------------------------------------------------//
 //																	  //
 //					The Deck class									  //
@@ -257,30 +257,35 @@ Card * Deck::get_Used_Deck()					//Get Used Deck function
 
 Card& Deck::new_random_card(int count)			//Function used to get a random card which hasnt already been drawn.
 {
-	int new_card;
-
+	
+	int new_card = 0;
 	bool flag = true;
 
 	while(flag == true)
 	{
+		new_card = 0;
 		flag = false;
+		srand((time(NULL)+0.45)*(time(NULL)*2));
 		new_card = rand() % 52 + 1;
+
+		//std::cout << new_card << "New Card \n";
 
 		for(int i = 0; i < 25; i++)
 		{
-			//std::cout << The_Deck[new_card] << " ";
-			//std::cout << Used_Cards[i] << " ";
+			//std::cout << The_Deck[new_card] << " \n";
+			//std::cout << Used_Cards[i] << " \n";
 			if(The_Deck[new_card] == Used_Cards[i])
 			{
 				flag = true;
-				//std::cout << The_Deck[new_card];
+				//std::cout << The_Deck[new_card] << "\n";
 			}
 		}
 	}
 
 	//std::cout << count;
-	
+	//std::cout << new_card;
 	Used_Cards[count] = The_Deck[new_card];
+	//std::cout << new_card << "new_card";
 	count++;
 	return The_Deck[new_card];
 }

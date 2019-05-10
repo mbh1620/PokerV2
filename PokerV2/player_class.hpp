@@ -16,6 +16,7 @@
 //							- An id number
 //							- The Big Four	
 
+class Table;
 
 class Player
 {
@@ -27,7 +28,7 @@ private:
 
 	int id;										//The Players Id.
 
-	//int score;								//The players score for each round
+	float score;
 
 	float balance;								//The players current balance.
 
@@ -64,6 +65,12 @@ public:
 
 	void display() const;						//Display player function
 
+	void set_score(float _score);
+
+	float get_score();
+
+	float calculate_score(Table& _table);
+
 	friend std::ostream& operator<<(std::ostream &os, const Player& a);				//Operator for doing cout << (Player)
 
 	friend std::ostream& operator<<(std::ostream &os, const Player* a);				//Operator for doing cout << (*Player)
@@ -73,7 +80,7 @@ public:
 
 Player::Player()
 {
-	score1.set_score(0);
+	score = 0;
 	balance = 100.00;
 	player_bet = 0;
 	fold_flag = false;
@@ -82,7 +89,7 @@ Player::Player()
 Player::Player(int _id)								//Constructor
 {
 	id = _id;
-	score1.set_score(0);
+	score = 0;
 	balance = 100.00;
 	player_bet = 0;
 	fold_flag = false;
@@ -93,7 +100,7 @@ Player::Player(int _id, const Hand& a)				//Constructor for when a Hand is suppl
 {
 	id = _id;
 	hand1 = a;
-	score1.set_score(0);
+	score = 0;
 	balance = 100.00;
 	player_bet = 0;
 	fold_flag = false;
@@ -155,18 +162,29 @@ void Player::set_fold_flag(bool set_to)
 
 void Player::display() const
 {
-	std::cout << "Player: "<< id << "\n" << hand1 << "\nBalance: £" << balance << "\n" << score1.get_score() << "\n" << player_bet << "\n";
+	std::cout << "Player: "<< id << "\n" << hand1 << "\nBalance: £" << balance << "\n" << score << "\n" << player_bet << "\n";
 }
 
 std::ostream& operator<<(std::ostream &os, const Player& a)
 {
-	return std::cout << "Player: "<< a.id << "\n" <<a.hand1 << "\nBalance: £" << a.balance << "\n" << a.score1.get_score() << "\n" << a.player_bet << "\n";
+	return std::cout << "Player: "<< a.id << "\n" <<a.hand1 << "\nBalance: £" << a.balance << "\n" << a.score << "\n" << a.player_bet << "\n";
 }
 
 std::ostream& operator<<(std::ostream &os, const Player* a)
 {
 	return std::cout << "Player: " << a -> get_id();
 }
+
+void Player::set_score(float _score)
+{
+	score = _score;
+}
+
+float Player::get_score()
+{
+	return score;
+}
+
 
 
 

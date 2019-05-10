@@ -40,6 +40,10 @@ public:
 
 	Card& operator=(const Card& a);		//Assigment Operator
 
+	bool operator<(const Card& a);		//Smaller than operator example: is A card smaller than B card? 
+
+	bool operator>(const Card& a); 		//Bigger than operator
+
 	bool operator==(const Card& a); 	//Comparitive operator
 
 	bool compare(const Card& a);        //Compare two cards
@@ -99,6 +103,68 @@ Card& Card:: operator=(const Card& a) 	//Assigment Operator
 
 	return *this;
 }
+
+bool Card:: operator<(const Card& a)
+{	
+	int x = 0;
+	int y = 0;
+	char values[13] = {'2','3','4','5','6','7','8','9','T','J','Q','K','A'};
+	for(int i = 0; i < 13; i++)
+	{
+		if(value == values[i])
+		{
+			x = i;
+		}
+	}
+
+	for(int i = 0; i < 13; i++)
+	{
+		if(a.value == values[i])
+		{
+			y = i;
+		}
+	}
+
+	if(x < y)
+	{
+		return true;
+	}
+
+	else
+		return false;
+}
+
+bool Card:: operator>(const Card& a)
+{	
+	int x = 0;
+	int y = 0;
+	char values[13] = {'2','3','4','5','6','7','8','9','T','J','Q','K','A'};
+	for(int i = 0; i < 13; i++)
+	{
+		if(value == values[i])
+		{
+			x = i;
+		}
+	}
+
+	for(int i = 0; i < 13; i++)
+	{
+		if(a.value == values[i])
+		{
+			y = i;
+		}
+	}
+
+	if(x > y)
+	{
+		return true;
+	}
+
+	else
+		return false;
+}
+
+
 
 bool Card::operator==(const Card& a) 	//Comparitive operator will compare two cards.
 {
