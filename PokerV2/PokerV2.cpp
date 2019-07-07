@@ -1,75 +1,33 @@
 #include <iostream>
-#include "card_class.hpp"
-#include "hand_class.hpp"
-#include "player_class.hpp"
-#include "table_class.hpp"
-#include "deck_class.hpp"
+#include "poker_game_class.hpp"
 
 
 int main()
 {	
 
-	//ALL OF THIS WILL EVENTUALLY GO IN A GAME CLASS
+	Poker_Game game1;
 
-	int player_num = 0;
+	game1.initialise_game();
 
-	std::cout << "Please input number of players";
+	game1.game_run();
 
-	std::cin >> player_num;
+	std::cout << "Next game 2";
 
+	game1.game_run(game1.get_current_players());
 
+	std::cout << "Next game 3";
 
-	//Create the deck and table dynamically
-	Deck* deck = new Deck();
+	game1.game_run(game1.get_current_players());
 
-	Table* table = new Table(player_num);
+	std::cout << "Next game 4";
 
-	//Deal players and table their cards
+	game1.game_run(game1.get_current_players());
 
-	deck -> deal_cards(table->get_all_players(), player_num, *table);
-
-	table -> set_game_flag(0);
-
-	for(int i = 0; i < player_num; i++)
-	{
-		table -> players_turn(i);
-	}
-
-	table -> set_game_flag(1);
-
-	for(int i = 0; i < player_num; i++)
-	{
-		table -> players_turn(i);
-	}
-
-	table -> set_game_flag(2);
-
-	for(int i = 0; i < player_num; i++)
-	{
-		table -> players_turn(i);
-	}
-
-	table -> set_game_flag(3);
-
-	for(int i = 0; i < player_num; i++)
-	{
-		table -> players_turn(i);
-	}
-
-	for(int i = 0; i < player_num; i++)
-	{
-		int score = table -> get_player(i).calculate_score(*table);
-		std::cout << score << "\n";
-	}
-
-	//Player with lowest score wins
-
-
-
+	return 0;
 	
 
 	// Card A('2','H');
-	// Card B('K','H');
+	// Card B('K','H');	
 	// Card C('J','S');
 	// Card D('9','C');
 	// Card E('7','D');

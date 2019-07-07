@@ -1,2 +1,8 @@
-{
-}
+"settings":
+	{
+		"sublimegdb_commandline": "gdb --interpreter=mi ./myfile",
+		"sublimegdb_workingdir": "${folder:${project_path:myfile}}",
+		"sublimegdb_exec_cmd": "-exec-run",
+		"tab_size": 8,
+		"sublimegdb_i_know_how_to_use_gdb_thank_you_very_much": true
+	}

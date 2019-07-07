@@ -37,10 +37,13 @@ private:
 
 	float highest_bet;							//A float used to store the highest current bet that has been placed.
 
+	float pot_total;							//A float used to express the pot to be won.
 
 public:
 
 	Table(int player_num); 											//Constructor - The number of players has to be provided.
+
+	Table(Player *old_players, int _player_num);					//Constructor - An array of players has to be supplied and the amount of players.
 
 	~Table();														//Destructor
 
@@ -57,6 +60,14 @@ public:
 	Card * get_Flop();												//Get Flop card function
 
 	Card * get_River();												//Get River Card function
+
+	int get_player_num();
+
+	float get_highest_bet();										//Get Highest Bet function
+
+	void set_highest_bet(float bet);
+
+	float get_pot();												//Get pot function
 
 	void set_game_flag(int _game_flag);								//Set the game flag. 0 (no cards shown), 1 (show flop), 2 (show turn) and 3 (show river).
 
@@ -77,6 +88,8 @@ Table::Table(int _player_num)												//Constructor for when the int number_o
 
 	game_flag = 0;
 
+	pot_total = 0;
+
 	highest_bet = 0;
 
 	Players = new Player[player_num];										//Create a new 'Player' array which has the name 'Players' which is pointed to. 
@@ -87,9 +100,29 @@ Table::Table(int _player_num)												//Constructor for when the int number_o
 	}
 }
 
+Table::Table(Player *old_players, int _player_num)							//A constructor for when a players array is supplied from an old table.
+{
+	player_num = _player_num;
+
+	pot_total = 0;
+
+	game_flag = 0;
+
+	highest_bet = 0;
+
+	Players = old_players;
+
+	
+}
+
 Table::~Table()																//Destructor which deletes the dynamically allocated array 'Players'.
 {
 	delete[] Players;
+}
+
+Table::Table(const Table& a)
+{
+	
 }
 
 Player& Table::get_player(int player_id)									//Get player function which returns the 'Player' object which is being requested.
@@ -122,6 +155,26 @@ Card * Table::get_River()
 	return River_Cards;
 }
 
+int Table::get_player_num()
+{
+	return player_num;
+}
+
+float Table::get_highest_bet()
+{
+	return highest_bet;
+}
+
+void Table::set_highest_bet(float bet)
+{
+	this -> highest_bet = bet;
+}
+
+float Table::get_pot()
+{
+	return pot_total;
+}
+
 void Table::set_game_flag(int _game_flag)
 {
 	game_flag = _game_flag;
@@ -140,6 +193,7 @@ void Table::players_turn(int current_player)
 		char f;
 
 		print_table();
+		std::cout << "The total pot is: £" << pot_total << "\n";
 		std::cout << "Your Cards: " << Players[current_player].get_hand() << "\n";
 		std::cout << "Your balance: £" << Players[current_player].get_balance() << "\n"; 
 		std::cout << "Would you like to Check(c), Fold(f), Raise(r) or Match(m)? \n";
@@ -169,6 +223,7 @@ void Table::players_turn(int current_player)
 			{
 				highest_bet = raise_bet;
 				float _players_updated_balance = Players[current_player].get_balance()-raise_bet;
+				pot_total = pot_total + raise_bet;
 				Players[current_player].set_balance(_players_updated_balance);
 			}
 			else if(raise_bet > Players[current_player].get_balance())
@@ -193,6 +248,7 @@ void Table::players_turn(int current_player)
 		{
 			bet = highest_bet;
 			float new_balance = Players[current_player].get_balance() - bet;
+			pot_total = pot_total + bet;
 			Players[current_player].set_balance(new_balance);
 		}
 
@@ -203,6 +259,9 @@ void Table::players_turn(int current_player)
 			std::cout << "You do not have enough money left, Do you want to go all in? (y/n)";
 			std::cin >> all_in;
 		}
+
+		system("clear");
+		system("clear");
 	}
 }
 

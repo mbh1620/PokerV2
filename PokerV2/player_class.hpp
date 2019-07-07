@@ -55,9 +55,9 @@ public:
 
 	Hand& get_hand();							//get hand function
 
-	float get_balance();						//get_balance function to return players balance
-
 	int get_id() const;							//get_id
+
+	float get_balance();						//get_balance function to return players balance
 
 	void set_balance(float balance);			//Set_balance
 
