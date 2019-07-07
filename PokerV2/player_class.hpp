@@ -65,11 +65,11 @@ public:
 
 	void display() const;						//Display player function
 
-	void set_score(float _score);
+	void set_score(float _score);				//Set score function
 
-	float get_score();
+	float get_score();							//Get score function
 
-	float calculate_score(Table& _table);
+	float calculate_score(Table& _table);		//Calculate the score for the player
 
 	friend std::ostream& operator<<(std::ostream &os, const Player& a);				//Operator for doing cout << (Player)
 
@@ -78,7 +78,7 @@ public:
 	
 };
 
-Player::Player()
+Player::Player()									//Constructor when no data is supplied.
 {
 	score = 0;
 	balance = 100.00;

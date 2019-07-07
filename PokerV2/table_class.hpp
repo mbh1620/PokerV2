@@ -29,18 +29,18 @@ private:
 
 	int player_num;								//The integer number for how many players are playing.
 
-	Card Flop_Cards[3];
+	Card Flop_Cards[3];							//An array of 3 cards used to store the dealt flop cards.
 
-	Card River_Cards[2];
+	Card River_Cards[2];						//An array of 2 cards to store the turn and river cards.
 
-	int game_flag;								//The game flag decides what cards are to be printed when the table is printed.
+	int game_flag;								//The game flag decides what cards are to be shown when the table is printed.
 
-	float highest_bet;
+	float highest_bet;							//A float used to store the highest current bet that has been placed.
 
 
 public:
 
-	Table(int player_num); 											//Constructor
+	Table(int player_num); 											//Constructor - The number of players has to be provided.
 
 	~Table();														//Destructor
 
@@ -54,15 +54,15 @@ public:
 
 	void set_River_cards(Card& river1, Card& river2);				//Set_River_Card function
 
-	Card * get_Flop();
+	Card * get_Flop();												//Get Flop card function
 
-	Card * get_River();
+	Card * get_River();												//Get River Card function
 
-	void set_game_flag(int _game_flag);
+	void set_game_flag(int _game_flag);								//Set the game flag. 0 (no cards shown), 1 (show flop), 2 (show turn) and 3 (show river).
 
-	void players_turn(int current_player);						//Function to allow players to take a turn.
+	void players_turn(int current_player);							//Function to allow players to take a turn.
 
-	void print_table();
+	void print_table();												//Used to print table GUI.
 
 	Player * get_all_players();										//Get all players function
 
@@ -99,20 +99,20 @@ Player& Table::get_player(int player_id)									//Get player function which ret
 
 }
 
-void Table::set_Flop_cards(Card& _flop1, Card& _flop2, Card& _flop3)
+void Table::set_Flop_cards(Card& _flop1, Card& _flop2, Card& _flop3)		//Set flop cards function. 
 {
 	Flop_Cards[0] = _flop1;
 	Flop_Cards[1] = _flop2;
 	Flop_Cards[2] = _flop3;
 }
 
-void Table::set_River_cards(Card& _river1, Card& _river2)
+void Table::set_River_cards(Card& _river1, Card& _river2)					//Set river cards function.
 {
 	River_Cards[0] = _river1;
 	River_Cards[1] = _river2;
 }
 
-Card * Table::get_Flop()
+Card * Table::get_Flop()													//Get flop function.
 {
 	return Flop_Cards;
 }
