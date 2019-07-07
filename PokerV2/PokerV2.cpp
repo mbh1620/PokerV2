@@ -11,15 +11,9 @@ int main()
 
 	game1.game_run();
 
-	std::cout << "Next game 2";
-
 	game1.game_run(game1.get_current_players());
 
-	std::cout << "Next game 3";
-
 	game1.game_run(game1.get_current_players());
-
-	std::cout << "Next game 4";
 
 	game1.game_run(game1.get_current_players());
 
