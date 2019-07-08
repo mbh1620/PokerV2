@@ -523,7 +523,7 @@
 			"file": "PokerV2.cpp",
 			"settings":
 			{
-				"buffer_size": 1085,
+				"buffer_size": 1099,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -865,7 +865,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -874,15 +874,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1085,
+						"buffer_size": 1099,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								300,
-								300
+								383,
+								383
 							]
 						],
 						"settings":
@@ -891,10 +891,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -920,10 +920,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2691.0,
+						"translation.y": 3238.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -952,7 +952,7 @@
 						"translation.y": 173.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
